@@ -4,11 +4,12 @@ import { useState } from "react";
 import { decodeContent, encodeContent } from "./utils/utils";
 import { useQueryState } from "nuqs";
 import Markdown from "react-markdown";
+import classNames from "classnames";
 
 export default function Home() {
   const [content, setContent] = useQueryState("content");
   const [markdown, setMarkdown] = useState(decodeContent(content ?? ""));
-  const [isEditMode, setIsEditMode] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const onMarkdownChange = (value: string): void => {
     setMarkdown(value);
@@ -24,7 +25,14 @@ export default function Home() {
             <li>
               <button
                 onClick={() => setIsEditMode(true)}
-                className="flex items-center relative px-3 py-2 transition text-teal-500 dark:text-teal-400 gap-2"
+                className={classNames(
+                  "flex items-center relative px-3 py-2 transition gap-2",
+                  {
+                    "before:absolute before:inset-x-1 before:h-px before:bg-gradient-to-r before:-bottom-px before:left-1/2 before:-translate-x-1/2 before:w-full before:from-teal-500/0 before:via-teal-500/40 before:to-teal-500/0 before:dark:from-teal-400/0 before:dark:via-teal-400/40 before:dark:to-teal-400/0":
+                      isEditMode,
+                    "text-teal-500 dark:text-teal-400": isEditMode,
+                  }
+                )}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -41,13 +49,19 @@ export default function Home() {
                   />
                 </svg>
                 Edit
-                <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
               </button>
             </li>
             <li>
               <button
                 onClick={() => setIsEditMode(false)}
-                className="flex items-center relative px-3 py-2 transition  gap-2"
+                className={classNames(
+                  "flex items-center relative px-3 py-2 transition gap-2",
+                  {
+                    "before:absolute before:inset-x-1 before:h-px before:bg-gradient-to-r before:-bottom-px before:left-1/2 before:-translate-x-1/2 before:w-full before:from-teal-500/0 before:via-teal-500/40 before:to-teal-500/0 before:dark:from-teal-400/0 before:dark:via-teal-400/40 before:dark:to-teal-400/0":
+                      !isEditMode,
+                    "text-teal-500 dark:text-teal-400": !isEditMode,
+                  }
+                )}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +101,7 @@ export default function Home() {
           onChange={(e) => onMarkdownChange(e.target.value)}
         />
       ) : (
-        <Markdown className="prose p-8 w-full max-w-2xl !flex-1 sm:prose-lg py-24 mx-auto">
+        <Markdown className="prose p-8 w-full max-w-2xl !flex-1 sm:prose-lg py-24 mx-auto prose-headings:tracking-tight prose-h1:font-bold prose-h1:tracking-tight">
           {markdown}
         </Markdown>
       )}

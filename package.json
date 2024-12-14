@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "next": "15.1.0",
     "nuqs": "^2.2.3",
     "react": "^19.0.0",
