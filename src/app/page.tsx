@@ -12,7 +12,9 @@ export default function Home() {
   const [content, setContent] = useQueryState("content");
   const [mode, setMode] = useQueryState("m");
   const [markdown, setMarkdown] = useState(decodeContent(content ?? ""));
-  const [isEditMode, setIsEditMode] = useState(mode === "edit" ? true : false);
+  const [isEditMode, setIsEditMode] = useState(
+    mode === "preview" ? false : true
+  );
 
   const onMarkdownChange = (value: string): void => {
     setMarkdown(value);
@@ -38,7 +40,7 @@ export default function Home() {
               <button
                 onClick={() => {
                   setIsEditMode(true);
-                  setMode("edit");
+                  setMode(null);
                 }}
                 className={classNames(
                   "flex items-center relative px-3 py-2 transition gap-2",
@@ -70,7 +72,7 @@ export default function Home() {
               <button
                 onClick={() => {
                   setIsEditMode(false);
-                  setMode(null);
+                  setMode("preview");
                 }}
                 className={classNames(
                   "flex items-center relative px-3 py-2 transition gap-2",
@@ -135,7 +137,7 @@ export default function Home() {
             <li>
               <a
                 className="flex items-center relative px-3 py-2 transition gap-2"
-                href="/?content=IyMgQWJvdXQKCldlbGNvbWUgdG8gKipNYXJrZG93biBTaGFyZSoqIOKAkyBhIGxpZ2h0d2VpZ2h0IGFuZCBzaW1wbGUgYXBwIGRlc2lnbmVkIHRvIGNyZWF0ZSwgZWRpdCwgYW5kIHNoYXJlIG1hcmtkb3duIGNvbnRlbnQgZWZmb3J0bGVzc2x5LgpNYWRlIGJ5IFtya2F0YW5pY10oaHR0cHM6Ly9naXRodWIuY29tL3JrYXRhbmljKS4KCiMjIyBLZXkgRmVhdHVyZXMKCi0gKipFZGl0IE1hcmtkb3duIHdpdGggRWFzZSoqOiBBIHNpbXBsZSBtYXJrZG93biBlZGl0b3IgdG8gY29tcG9zZSBhbmQgcHJldmlldyB5b3VyIGNvbnRlbnQgaW4gcmVhbC10aW1lLgotICoqVVJMLUJhc2VkIFNoYXJpbmcqKjogWW91ciBjb250ZW50IGlzIGVuY29kZWQgZGlyZWN0bHkgaW50byB0aGUgVVJMLCBtYWtpbmcgc2hhcmluZyBzZWFtbGVzcyBhbmQgcHJpdmF0ZS4KCiMjIyBIb3cgSXQgV29ya3MKCjEuIFdyaXRlIHlvdXIgbWFya2Rvd24gY29udGVudCBpbiB0aGUgZWRpdG9yLgoyLiBUaGUgYXBwIGVuY29kZXMgeW91ciBjb250ZW50IGludG8gdGhlIFVSTCBkeW5hbWljYWxseS4KMy4gU2hhcmUgdGhlIFVSTCB3aXRoIGFueW9uZSB0byBsZXQgdGhlbSB2aWV3IG9yIGVkaXQgdGhlIGNvbnRlbnQuCgojIyMgV2h5IHRoaXM/CgpNYXJrZG93biBTaGFyZSBpcyBidWlsdCBmb3IgKipkZXZlbG9wZXJzLCB3cml0ZXJzLCBhbmQgY29sbGFib3JhdG9ycyoqIHdobyB2YWx1ZSBzaW1wbGljaXR5LCBwcml2YWN5LCBhbmQgZWZmaWNpZW5jeS4gV2hldGhlciBpdCdzIHNoYXJpbmcgYSBxdWljayBub3RlLCBhIHRlY2huaWNhbCBkb2N1bWVudCwgb3IgZHJhZnQgY29udGVudCwgTWFya2Rvd24gU2hhcmUga2VlcHMgaXQgZmFzdCBhbmQgc2VjdXJlLgoKLS0tCgoqKkJ1aWx0IHdpdGgg4p2k77iPIGFuZCBzaW1wbGljaXR5IGluIG1pbmQuKioK"
+                href="/?content=IyMgQWJvdXQKCldlbGNvbWUgdG8gKipNYXJrZG93biBTaGFyZSoqIOKAkyBhIGxpZ2h0d2VpZ2h0IGFuZCBzaW1wbGUgYXBwIGRlc2lnbmVkIHRvIGNyZWF0ZSwgZWRpdCwgYW5kIHNoYXJlIG1hcmtkb3duIGNvbnRlbnQgZWZmb3J0bGVzc2x5LgpNYWRlIGJ5IFtya2F0YW5pY10oaHR0cHM6Ly9naXRodWIuY29tL3JrYXRhbmljKS4KCiMjIyBLZXkgRmVhdHVyZXMKCi0gKipFZGl0IE1hcmtkb3duIHdpdGggRWFzZSoqOiBBIHNpbXBsZSBtYXJrZG93biBlZGl0b3IgdG8gY29tcG9zZSBhbmQgcHJldmlldyB5b3VyIGNvbnRlbnQgaW4gcmVhbC10aW1lLgotICoqVVJMLUJhc2VkIFNoYXJpbmcqKjogWW91ciBjb250ZW50IGlzIGVuY29kZWQgZGlyZWN0bHkgaW50byB0aGUgVVJMLCBtYWtpbmcgc2hhcmluZyBzZWFtbGVzcyBhbmQgcHJpdmF0ZS4KCiMjIyBIb3cgSXQgV29ya3MKCjEuIFdyaXRlIHlvdXIgbWFya2Rvd24gY29udGVudCBpbiB0aGUgZWRpdG9yLgoyLiBUaGUgYXBwIGVuY29kZXMgeW91ciBjb250ZW50IGludG8gdGhlIFVSTCBkeW5hbWljYWxseS4KMy4gU2hhcmUgdGhlIFVSTCB3aXRoIGFueW9uZSB0byBsZXQgdGhlbSB2aWV3IG9yIGVkaXQgdGhlIGNvbnRlbnQuCgojIyMgV2h5IHRoaXM/CgpNYXJrZG93biBTaGFyZSBpcyBidWlsdCBmb3IgKipkZXZlbG9wZXJzLCB3cml0ZXJzLCBhbmQgY29sbGFib3JhdG9ycyoqIHdobyB2YWx1ZSBzaW1wbGljaXR5LCBwcml2YWN5LCBhbmQgZWZmaWNpZW5jeS4gV2hldGhlciBpdCdzIHNoYXJpbmcgYSBxdWljayBub3RlLCBhIHRlY2huaWNhbCBkb2N1bWVudCwgb3IgZHJhZnQgY29udGVudCwgTWFya2Rvd24gU2hhcmUga2VlcHMgaXQgZmFzdCBhbmQgc2VjdXJlLgoKLS0tCgoqKkJ1aWx0IHdpdGgg4p2k77iPIGFuZCBzaW1wbGljaXR5IGluIG1pbmQuKioK&m=preview"
                 target="_blank"
               >
                 <svg

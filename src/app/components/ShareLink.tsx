@@ -9,7 +9,7 @@ const ShareLink = () => {
 
   const handleShare = (): void => {
     const params = new URLSearchParams(searchParams);
-    params.delete("m");
+    params.set("m", "preview");
     const cleanUrl = `${
       window.location.origin
     }${pathname}?${params.toString()}`;
