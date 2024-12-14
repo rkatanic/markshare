@@ -34,7 +34,7 @@ export default function Home() {
         }}
       />
       <div className="flex flex-1 justify-end md:justify-center">
-        <nav className="pointer-events-auto hidden md:block fixed top-6 left-1/2 -translate-x-1/2">
+        <nav className="pointer-events-auto fixed top-6 left-1/2 -translate-x-1/2">
           <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur ">
             <li>
               <button
@@ -45,9 +45,9 @@ export default function Home() {
                 className={classNames(
                   "flex items-center relative px-3 py-2 transition gap-2",
                   {
-                    "before:absolute before:inset-x-1 before:h-px before:bg-gradient-to-r before:-bottom-px before:left-1/2 before:-translate-x-1/2 before:w-full before:from-teal-500/0 before:via-teal-500/40 before:to-teal-500/0 before:dark:from-teal-400/0 before:dark:via-teal-400/40 before:dark:to-teal-400/0":
+                    "before:absolute before:inset-x-1 before:h-px before:bg-gradient-to-r before:-bottom-px before:left-1/2 before:-translate-x-1/2 before:w-full before:from-indigo-500/0 before:via-indigo-500/60 before:to-indigo-500/0":
                       isEditMode,
-                    "text-teal-500 dark:text-teal-400": isEditMode,
+                    "text-indigo-600": isEditMode,
                   }
                 )}
               >
@@ -55,7 +55,7 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                   stroke="currentColor"
                   className="size-4"
                 >
@@ -65,7 +65,7 @@ export default function Home() {
                     d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
                   />
                 </svg>
-                Edit
+                <span className="hidden sm:block">Edit</span>
               </button>
             </li>
             <li>
@@ -77,9 +77,9 @@ export default function Home() {
                 className={classNames(
                   "flex items-center relative px-3 py-2 transition gap-2",
                   {
-                    "before:absolute before:inset-x-1 before:h-px before:bg-gradient-to-r before:-bottom-px before:left-1/2 before:-translate-x-1/2 before:w-full before:from-teal-500/0 before:via-teal-500/40 before:to-teal-500/0 before:dark:from-teal-400/0 before:dark:via-teal-400/40 before:dark:to-teal-400/0":
+                    "before:absolute before:inset-x-1 before:h-px before:bg-gradient-to-r before:-bottom-px before:left-1/2 before:-translate-x-1/2 before:w-full before:from-indigo-500/0 before:via-indigo-500/60 before:to-indigo-500/0":
                       !isEditMode,
-                    "text-teal-500 dark:text-teal-400": !isEditMode,
+                    "text-indigo-600": !isEditMode,
                   }
                 )}
               >
@@ -87,7 +87,7 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                   stroke="currentColor"
                   className="size-4"
                 >
@@ -102,7 +102,7 @@ export default function Home() {
                     d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                   />
                 </svg>
-                Preview
+                <span className="hidden sm:block">Preview</span>
               </button>
             </li>
 
@@ -121,7 +121,7 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                   stroke="currentColor"
                   className="size-4"
                 >
@@ -131,7 +131,7 @@ export default function Home() {
                     d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
                   />
                 </svg>
-                New
+                <span className="hidden sm:block">New</span>
               </a>
             </li>
             <li>
@@ -144,7 +144,7 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={2}
                   stroke="currentColor"
                   className="size-4"
                 >
@@ -154,7 +154,7 @@ export default function Home() {
                     d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
                   />
                 </svg>
-                About
+                <span className="hidden sm:block">About</span>
               </a>
             </li>
           </ul>
@@ -162,11 +162,7 @@ export default function Home() {
       </div>
       {isEditMode ? (
         <textarea
-          className="outline-none border-none flex-1 w-full mx-auto min-h-screen p-8 py-24 resize-none block font-mono"
-          style={{
-            paddingLeft: "calc((100vw - 608px) / 2)",
-            paddingRight: "calc((100vw - 608px) / 2)",
-          }}
+          className="sm:pl-[calc((100vw-600px)/2)] sm:pr-[calc((100vw-600px)/2)] outline-none border-none flex-1 w-full mx-auto min-h-screen p-4 py-20 sm:py-24 resize-none block font-mono"
           name="markdown"
           id="markdown"
           placeholder="Write your markdown here..."
@@ -174,7 +170,7 @@ export default function Home() {
           onChange={(e) => onMarkdownChange(e.target.value)}
         />
       ) : (
-        <Markdown className="prose p-8 w-full max-w-2xl !flex-1 sm:prose-lg py-24 mx-auto prose-headings:tracking-tight prose-h1:font-bold prose-h1:tracking-tight">
+        <Markdown className="prose prose-gray p-4 py-20 sm:p-8 w-full max-w-2xl !flex-1 sm:prose-lg sm:py-24 mx-auto prose-headings:tracking-tight prose-h1:font-bold prose-h1:tracking-tight">
           {markdown ? markdown : "Nothing to preview yet."}
         </Markdown>
       )}
