@@ -3,10 +3,10 @@
 import { Suspense, useState } from "react";
 import { decodeContent, encodeContent } from "./utils/utils";
 import { useQueryState } from "nuqs";
-import Markdown from "react-markdown";
 import classNames from "classnames";
 import ShareLink from "./components/ShareLink";
 import { Toaster } from "react-hot-toast";
+import MarkdownOutput from "./components/MarkdownOutput";
 
 export default function Home() {
   const [content, setContent] = useQueryState("content");
@@ -170,9 +170,7 @@ export default function Home() {
           onChange={(e) => onMarkdownChange(e.target.value)}
         />
       ) : (
-        <Markdown className="prose prose-gray p-4 py-20 sm:p-8 w-full max-w-2xl !flex-1 sm:prose-lg sm:py-24 mx-auto prose-headings:tracking-tight prose-h1:font-bold prose-h1:tracking-tight">
-          {markdown ? markdown : "Nothing to preview yet."}
-        </Markdown>
+        <MarkdownOutput markdown={markdown} />
       )}
     </div>
   );

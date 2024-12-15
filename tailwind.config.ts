@@ -7,6 +7,24 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
+  theme: {
+    extend: {
+      typography: () => ({
+        DEFAULT: {
+          css: {
+            pre: {
+              backgroundColor: "transparent",
+              padding: "0",
+            },
+            code: {
+              backgroundColor: "transparent",
+              padding: "0",
+              color: "inherit",
+            },
+          },
+        },
+      }),
+    },
+  },
   plugins: [typography],
 } satisfies Config;
