@@ -75,8 +75,7 @@ const CODE_STYLE: {
     color: "#f472b6",
   },
   "class-name": {
-    color: "#FFFFB6",
-    textDecoration: "underline",
+    color: "#f4f4f5",
   },
   boolean: {
     color: "#5eead4",
@@ -118,8 +117,7 @@ const CODE_STYLE: {
     color: "#a1a1aa",
   },
   entity: {
-    color: "#FFFFB6",
-    cursor: "help",
+    color: "#f4f4f5",
   },
   url: {
     color: "#f472b6",
